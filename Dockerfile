@@ -21,7 +21,35 @@ RUN sudo chown -R coder:coder /home/coder/.local
 
 # You can add custom software and dependencies for your environment below
 # -----------
+RUN         apt-get update \
+                && apt-get install -y \
+                    software-properties-common \
+                    wget \
+                && apt-get install build-essential  \
+                && apt-get update \
+                && apt-get install -y \
+                    make \
+                    git \
+                    curl \
+                    vim \
+                    vim-gnome \
+                && apt-get install -y cmake=3.5.1-1ubuntu3 \
+                && apt-get install -y \
+                    gcc-4.9 g++-4.9 gcc-4.9-base \
+                    gcc-4.8 g++-4.8 gcc-4.8-base \
+                    gcc-4.7 g++-4.7 gcc-4.7-base \
+                    gcc-4.6 g++-4.6 gcc-4.6-base \
+                && update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.9 100 \
+                && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 100
 
+
+# R pre-requisites
+RUN apt-get update --yes && \
+    apt-get install --yes --no-install-recommends \
+    fonts-dejavu \
+    gfortran \
+    gcc && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
 # RUN code-server --install-extension esbenp.prettier-vscode
