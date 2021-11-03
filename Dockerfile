@@ -28,14 +28,13 @@ RUN sudo apt-get -y install cmake
 RUN sudo apt-get install -y build-essential
                 
 RUN code-server --install-extension esbenp.prettier-vscode
-# RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.6.0/cpptools-linux.vsix
-# RUN code-server --install-extension cpptools-linux.vsix 
+
 RUN code-server --install-extension twxs.cmake 
 RUN code-server --install-extension ms-vscode.cmake-tools 
 RUN code-server --install-extension ms-python.python 
 RUN code-server --install-extension mhutchie.git-graph
 RUN code-server --install-extension christian-kohler.path-intellisense
-
+RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.6.0/cpptools-linux.vsix
 
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
@@ -49,6 +48,7 @@ RUN code-server --install-extension christian-kohler.path-intellisense
 
 # -----------
 
+# RUN code-server --install-extension cpptools-linux.vsix 
 # Port
 ENV PORT=8080
 
