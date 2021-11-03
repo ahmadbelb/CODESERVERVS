@@ -1,5 +1,5 @@
 # Start from the code-server Debian base image
-FROM codercom/code-server:3.10.2
+FROM codercom/code-server:3.12.0
 
 USER coder
 
@@ -27,14 +27,14 @@ RUN sudo apt-get install -y wget
 RUN sudo apt-get -y install cmake
 RUN sudo apt-get install -y build-essential
                 
-RUN code-server --install-extension esbenp.prettier-vscode
-RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.6.0/cpptools-linux.vsix
-RUN code-server --install-extension cpptools-linux.vsix 
-RUN code-server --install-extension twxs.cmake 
-RUN code-server --install-extension ms-vscode.cmake-tools 
-RUN code-server --install-extension ms-python.python 
-RUN code-server --install-extension mhutchie.git-graph
-RUN code-server --install-extension christian-kohler.path-intellisense
+# RUN code-server --install-extension esbenp.prettier-vscode
+# RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.6.0/cpptools-linux.vsix
+# RUN code-server --install-extension cpptools-linux.vsix 
+# RUN code-server --install-extension twxs.cmake 
+# RUN code-server --install-extension ms-vscode.cmake-tools 
+# RUN code-server --install-extension ms-python.python 
+# RUN code-server --install-extension mhutchie.git-graph
+# RUN code-server --install-extension christian-kohler.path-intellisense
 
 
 # Install a VS Code extension:
