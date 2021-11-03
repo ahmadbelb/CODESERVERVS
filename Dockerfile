@@ -25,7 +25,8 @@ RUN         apt-get update \
                 && apt-get install -y \
                     software-properties-common \
                     wget \
-                && apt-get install build-essential  \
+                    build-essential \
+             
                 && apt-get update \
                 && apt-get install -y \
                     make \
@@ -43,13 +44,7 @@ RUN         apt-get update \
                 && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.9 100
 
 
-# R pre-requisites
-RUN apt-get update --yes && \
-    apt-get install --yes --no-install-recommends \
-    fonts-dejavu \
-    gfortran \
-    gcc && \
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
 # RUN code-server --install-extension esbenp.prettier-vscode
