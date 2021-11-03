@@ -48,7 +48,7 @@ RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.6.0/cp
 
 # -----------
 
-# RUN code-server --install-extension cpptools-linux.vsix 
+RUN code-server --install-extension cpptools-linux.vsix 
 # Port
 ENV PORT=8080
 
