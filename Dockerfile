@@ -28,7 +28,7 @@ RUN sudo apt-get -y install cmake
 RUN sudo apt-get install -y build-essential
                 
 RUN code-server --install-extension esbenp.prettier-vscode
-RUN sudo apt-get install -y ubuntu-make
+
 
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
