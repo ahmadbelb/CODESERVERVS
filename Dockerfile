@@ -36,6 +36,11 @@ RUN code-server --install-extension mhutchie.git-graph
 RUN code-server --install-extension christian-kohler.path-intellisense
 RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.6.0/cpptools-linux.vsix
 
+RUN sudo apt-get update
+RUN sudo apt-get install python3 python3-venv python3-pip
+Run sudo apt install python3-numpy
+RUN python -m pip install -U matplotlib
+
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
 # RUN code-server --install-extension esbenp.prettier-vscode
