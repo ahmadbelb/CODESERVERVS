@@ -42,6 +42,7 @@ RUN sudo apt-get install -y python3 python3-venv python3-pip
 RUN sudo apt-get install -y python3-numpy
 RUN sudo apt-get install -y python3-pip
 RUN sudo apt-get install -y python3-matplotlib
+RUN sudo apt-get install -y gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 wine64
 
 
 # Install a VS Code extension:
