@@ -35,7 +35,7 @@ RUN code-server --install-extension ms-vscode.cmake-tools
 RUN code-server --install-extension ms-python.python 
 RUN code-server --install-extension mhutchie.git-graph
 RUN code-server --install-extension christian-kohler.path-intellisense
-RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.6.0/cpptools-linux.vsix
+RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.7.1/cpptools-linux.vsix
 
 RUN sudo apt-get update
 RUN sudo apt-get install -y python3 python3-venv python3-pip
