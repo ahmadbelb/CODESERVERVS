@@ -37,8 +37,8 @@ RUN code-server --install-extension christian-kohler.path-intellisense
 RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.6.0/cpptools-linux.vsix
 
 RUN sudo apt-get update
-RUN sudo apt-get install python3 python3-venv python3-pip
-RUN sudo apt install python3-numpy
+RUN sudo apt-get install -y python3 python3-venv python3-pip
+RUN sudo apt-get install -y python3-numpy
 RUN python -m pip install -U matplotlib
 
 # Install a VS Code extension:
