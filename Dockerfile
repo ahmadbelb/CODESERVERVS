@@ -40,7 +40,7 @@ RUN sudo apt-get update
 RUN sudo apt-get install -y python3 python3-venv python3-pip
 RUN sudo apt-get install -y python3-numpy
 RUN sudo apt-get install -y python3-pip
-RUN sudo apt-get install python3-matplotlib
+RUN sudo apt-get install -y python3-matplotlib
 
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
