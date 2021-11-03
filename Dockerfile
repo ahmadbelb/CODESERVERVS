@@ -28,6 +28,13 @@ RUN sudo apt-get -y install cmake
 RUN sudo apt-get install -y build-essential
                 
 RUN code-server --install-extension esbenp.prettier-vscode
+RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.6.0/cpptools-linux.vsix && \
+    /home/devel/.local/bin/code-server --install-extension cpptools-linux.vsix && \
+    /home/devel/.local/bin/code-server --install-extension twxs.cmake && \
+    /home/devel/.local/bin/code-server --install-extension ms-vscode.cmake-tools && \
+    /home/devel/.local/bin/code-server --install-extension ms-python.python && \
+    /home/devel/.local/bin/code-server --install-extension mhutchie.git-graph && \
+    /home/devel/.local/bin/code-server --install-extension christian-kohler.path-intellisense
 
 
 # Install a VS Code extension:
