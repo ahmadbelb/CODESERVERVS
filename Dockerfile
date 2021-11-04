@@ -36,15 +36,15 @@ RUN code-server --install-extension ms-python.python
 RUN code-server --install-extension mhutchie.git-graph
 RUN code-server --install-extension christian-kohler.path-intellisense
 RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.7.1/cpptools-linux.vsix
-
+RUN wget https://github.com/formulahendry/vscode-code-runner/releases/download/0.9.17/code-runner-0.9.17.vsix
 RUN sudo apt-get update
 RUN sudo apt-get install -y python3 python3-venv python3-pip
 RUN sudo apt-get install -y python3-numpy
 RUN sudo apt-get install -y python3-pip
 RUN sudo apt-get install -y python3-matplotlib
 RUN sudo apt-get install -y gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 wine64
-
-
+COPY deploy-container/myTool/cie1_exercise_03_vectorcomputations2_solution /home/coder/Projects/cie1_exercise_03_vectorcomputations2_solution
+COPY deploy-container/myTool/implicitgeometry /home/coder/Projects/implicitgeometry
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
 # RUN code-server --install-extension esbenp.prettier-vscode
@@ -56,8 +56,12 @@ RUN sudo apt-get install -y gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 wine64
 # COPY deploy-container/myTool /home/coder/myTool
 
 # -----------
-
+RUN code-server --install-extension code-runner-0.9.17.vsix 
 RUN code-server --install-extension cpptools-linux.vsix 
+
+RUN sudo rm -rf  /home/coder/.local/share/code-server/User/settings.json
+COPY deploy-container/myTool/settings.json /home/coder/.local/share/code-server/User/
+
 # Port
 ENV PORT=8080
 
