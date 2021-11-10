@@ -47,6 +47,19 @@ COPY deploy-container/myTool/cie1_exercise_03_vectorcomputations2_solution /home
 COPY deploy-container/myTool/implicitgeometry /home/coder/project/implicitgeometry
 RUN sudo apt-get install -y cmake-gui
 RUN sudo apt-get install -y build-essential gdb
+RUN sudo apt-get install -y libgmp-dev
+RUN echo 'coder ALL=NOPASSWD: /usr/bin/apt-get install' | sudo EDITOR='tee -a' visudo
+RUN echo 'coder ALL=NOPASSWD: /var/lib/dpkg/lock-frontend' | sudo EDITOR='tee -a' visudo
+RUN echo 'coder ALL=NOPASSWD: /usr/bin/apt-get update' | sudo EDITOR='tee -a' visudo
+RUN echo 'coder ALL=NOPASSWD: /usr/bin/gdb' | sudo EDITOR='tee -a' visudo
+RUN sudo chown  coder: /var/lib/dpkg/lock-frontend
+RUN chmod  u+w /var/lib/dpkg/lock-frontend 
+RUN sudo chown  coder: /var/lib/dpkg/lock
+RUN chmod  u+w /var/lib/dpkg/lock
+RUN sudo chown  coder: /var/cache/apt/archives/lock
+RUN chmod  u+w /var/cache/apt/archives/lock
+RUN sudo chown  coder:  /var/lib/apt/lists/lock
+RUN chmod  u+w  /var/lib/apt/lists/lock
 
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
