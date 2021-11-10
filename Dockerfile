@@ -45,6 +45,9 @@ RUN sudo apt-get install -y python3-matplotlib
 RUN sudo apt-get install -y gcc-mingw-w64-x86-64 g++-mingw-w64-x86-64 wine64
 COPY deploy-container/myTool/cie1_exercise_03_vectorcomputations2_solution /home/coder/project/cie1_exercise_03_vectorcomputations2_solution
 COPY deploy-container/myTool/implicitgeometry /home/coder/project/implicitgeometry
+RUN sudo apt-get install -y cmake-gui
+RUN sudo apt-get install -y build-essential gdb
+
 # Install a VS Code extension:
 # Note: we use a different marketplace than VS Code. See https://github.com/cdr/code-server/blob/main/docs/FAQ.md#differences-compared-to-vs-code
 # RUN code-server --install-extension esbenp.prettier-vscode
