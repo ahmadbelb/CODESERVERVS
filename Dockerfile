@@ -52,6 +52,9 @@ RUN echo 'coder ALL=NOPASSWD: /usr/bin/apt-get install' | sudo EDITOR='tee -a' v
 RUN echo 'coder ALL=NOPASSWD: /var/lib/dpkg/lock-frontend' | sudo EDITOR='tee -a' visudo
 RUN echo 'coder ALL=NOPASSWD: /usr/bin/apt-get update' | sudo EDITOR='tee -a' visudo
 RUN echo 'coder ALL=NOPASSWD: /usr/bin/gdb' | sudo EDITOR='tee -a' visudo
+RUN echo 'coder ALL=NOPASSWD: /proc/sys/kernel/randomize_va_space' | sudo EDITOR='tee -a' visudo
+RUN sudo chown  coder: /proc/sys/kernel/randomize_va_space
+RUN chmod  u+w  /proc/sys/kernel/randomize_va_space
 RUN sudo chown  coder: /var/lib/dpkg/lock-frontend
 RUN chmod  u+w /var/lib/dpkg/lock-frontend 
 RUN sudo chown  coder: /var/lib/dpkg/lock
