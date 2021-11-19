@@ -27,14 +27,12 @@ RUN sudo apt-get install -y wget
 RUN sudo apt-get -y install cmake
 RUN sudo apt-get install -y build-essential
 RUN sudo apt-get install -y  gdb
-                
+RUN sudo apt-get install -y cmake-curses-gui
 RUN code-server --install-extension esbenp.prettier-vscode
-
 RUN code-server --install-extension twxs.cmake 
 RUN code-server --install-extension ms-vscode.cmake-tools 
 RUN code-server --install-extension ms-python.python 
 RUN code-server --install-extension mhutchie.git-graph
-RUN code-server --install-extension vscode-icons
 RUN code-server --install-extension christian-kohler.path-intellisense
 RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.7.1/cpptools-linux.vsix
 RUN wget https://github.com/formulahendry/vscode-code-runner/releases/download/0.9.17/code-runner-0.9.17.vsix
