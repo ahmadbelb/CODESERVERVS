@@ -34,9 +34,11 @@ RUN code-server --install-extension twxs.cmake
 RUN code-server --install-extension ms-vscode.cmake-tools 
 RUN code-server --install-extension ms-python.python 
 RUN code-server --install-extension mhutchie.git-graph
+RUN code-server --install-extension vscode-icons
 RUN code-server --install-extension christian-kohler.path-intellisense
 RUN wget https://github.com/microsoft/vscode-cpptools/releases/download/1.7.1/cpptools-linux.vsix
 RUN wget https://github.com/formulahendry/vscode-code-runner/releases/download/0.9.17/code-runner-0.9.17.vsix
+RUN wget https://github.com/Axosoft/vscode-gitlens/releases/download/v11.7.0/gitlens-11.7.0.vsix
 RUN sudo apt-get update
 RUN sudo apt-get install -y python3 python3-venv python3-pip
 RUN sudo apt-get install -y python3-numpy
@@ -74,7 +76,7 @@ RUN chmod  u+w  /var/lib/apt/lists/lock
 # -----------
 RUN code-server --install-extension code-runner-0.9.17.vsix 
 RUN code-server --install-extension cpptools-linux.vsix 
-
+RUN code-server --install-extension gitlens-11.7.0.vsix
 RUN sudo rm -rf  /home/coder/.local/share/code-server/User/settings.json
 COPY deploy-container/myTool/settings.json /home/coder/.local/share/code-server/User/
 
