@@ -74,7 +74,6 @@ RUN chmod  u+w  /var/lib/apt/lists/lock
 # -----------
 RUN code-server --install-extension code-runner-0.9.17.vsix 
 RUN code-server --install-extension cpptools-linux.vsix 
-RUN code-server --install-extension gitlens-11.7.0.vsix
 RUN sudo rm -rf  /home/coder/.local/share/code-server/User/settings.json
 COPY deploy-container/myTool/settings.json /home/coder/.local/share/code-server/User/
 
