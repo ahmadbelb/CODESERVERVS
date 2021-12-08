@@ -1,28 +1,42 @@
-#include "Circle.hpp"
-#include "Rectangle.hpp"
-#include "Intersection.hpp"
-#include "Union.hpp"
-#include "Difference.hpp"
-#include "quadtree.hpp"
-
+#include "DoubleVector.hpp"
 #include <iostream>
 
 int main( )
 {
-    // these two do the same thing (but the second one is slightly faster):
-    // implicit::ImplicitGeometryPtr circle1( new implicit::Circle( 0.0, 0.0, 1.06 ) );
-    // auto circle1 = std::make_shared<implicit::Circle>( 0.0, 0.0, 1.06 );
+    cie::DoubleVector vector1( 3 );
+    cie::DoubleVector vector2( 3 );
+    
+    std::cout << "Input vector 1" << std::endl;
+    cie::userInput( vector1 );
+    
+    std::cout << "\nInput vector 2" << std::endl;
+    cie::userInput( vector2 );
+    
+    std::cout << "\nBoth vectors are:\nvector1 = ";
+    cie::print( vector1 );
+    std::cout << "vector2 = ";
+    cie::print( vector2 );
+    
+    std::cout << "\nDot product is: " << cie::dotProduct( vector1, vector2 ) << std::endl;
+    
+    vector1.push_back( 1.0 );
+    vector2.push_back( 1.0 );
+    
+    // This should give previous one + 1
+    std::cout << "\nNew dot product is: " << cie::dotProduct( vector1, vector2 ) << std::endl;
+	
+	
+	//...............
+	 std::vector<double> standardVectorDouble( 3 );
 
-    auto circle1 = std::make_shared<implicit::Circle>( 0.0, 0.0, 1.06 );
-    auto rectangle1 = std::make_shared<implicit::Rectangle>( -1.0, -1.0, 1.0, 1.0 );
-    auto intersection = std::make_shared<implicit::Intersection>( circle1, rectangle1 );
-    auto rectangle2 = std::make_shared<implicit::Rectangle>( -0.1, -1.5, 0.1, 1.5 );
-    auto union1 = std::make_shared<implicit::Union>( intersection, rectangle2 );
-    auto circle2 = std::make_shared<implicit::Circle>( 0.0, 0.0, 0.65 );
-    auto geometry = std::make_shared<implicit::Difference>( union1, circle2 );
-        
-    implicit::Cell2D boundingBox { implicit::Bounds { -1.58, 1.58 },
-                                   implicit::Bounds { -1.58, 1.58 } };
+    standardVectorDouble[0] = -1.2;
+    standardVectorDouble[1] =  2.1;
+    standardVectorDouble[2] =  3.2;
 
-    implicit::generateQuadTree( *geometry, boundingBox, 7, "quadtree.vtk" );
+	std::cout << "\nNew dot product between a vector and a standard vector: " << helper::dotProduct(vector1, standardVectorDouble)    << std::endl;
+	
+	//Bonus Question: Try to multiply two do the dot product of a DoubleVector and a vector of strings. What happens? 
+	
+	
+    return 0;
 }

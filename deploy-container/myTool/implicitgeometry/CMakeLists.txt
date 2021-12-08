@@ -1,32 +1,35 @@
 cmake_minimum_required( VERSION 3.4.3 )
 
 # Project name and programming language
-project( implicitgeometry CXX )
+project( doublevector CXX )
 
-# Gather files and store paths in CMake variables
+# Gather file names and store them in CMake variables
 file( GLOB LIBRARY_SOURCE_FILES library/src/*.cpp )
 file( GLOB TEST_SOURCE_FILES library/test/*.cpp )
 file( GLOB HEADER_FILES library/inc/*.h* )
 
-# Specify the folders with header files, otherwise our includes are not found 
-include_directories( external/catch )
-include_directories( library/inc )
-
 # Enables exporting all symbols to the dll on windows
 set( CMAKE_WINDOWS_EXPORT_ALL_SYMBOLS ON )
 
-# When compiling with gcc we need to compile libraries with fPIC (stands for position independent code).
+# When using gcc add fPIC (position independent code) and some other flags.
 if( CMAKE_COMPILER_IS_GNUCXX )
-    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -pedantic -Wall -Werror -std=c++11" )
+    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIC -std=c++11 -Wall -Wextra" )
 endif( CMAKE_COMPILER_IS_GNUCXX )
 
-# Add compilation target for our library
-add_library( implicitgeometry SHARED ${LIBRARY_SOURCE_FILES} ${HEADER_FILES} )
+# Add compilation target for our library. Adding header files here will make 
+# them show up in Visual Studio. We still need to set include folders later.
+add_library( doublevector SHARED ${LIBRARY_SOURCE_FILES} ${HEADER_FILES} )
 
 # Add compilation target for our executables
-add_executable( implicitgeometry_testrunner ${TEST_SOURCE_FILES} ${HEADER_FILES} )
-add_executable( main drivers/main.cpp ${HEADER_FILES} )
+add_executable( main drivers/main.cpp )
+add_executable( doublevector_testrunner ${TEST_SOURCE_FILES} )
 
-# Add link depenencies
-target_link_libraries( implicitgeometry_testrunner implicitgeometry )
-target_link_libraries( main implicitgeometry )
+# Add include dependencies
+target_include_directories( doublevector PUBLIC library/inc )
+target_include_directories( main PUBLIC library/inc )
+target_include_directories( doublevector_testrunner PUBLIC 
+                            library/inc external/catch )
+
+# Add link dependencies
+target_link_libraries( doublevector_testrunner PUBLIC doublevector )
+target_link_libraries( main PUBLIC doublevector )
