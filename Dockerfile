@@ -21,6 +21,7 @@ RUN sudo chown -R coder:coder /home/coder/.local
 
 # You can add custom software and dependencies for your environment below
 # -----------
+RUN sudo apt-get update
 RUN sudo apt-get install -y nodejs
 RUN sudo apt-get install -y build-essential
 RUN sudo apt-get install -y wget 
